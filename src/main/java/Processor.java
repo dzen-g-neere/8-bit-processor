@@ -1,13 +1,20 @@
 
 // Registers everywhere we need gates
 
+import java.util.Arrays;
+
 public class Processor {
     public static void main(String[] args) {
         Register ALU1 = new Register();
-        Register ALU2 = new Register();
+        ALURegister ALU2 = new ALURegister();
+        ALUResultRegister ALU3 = new ALUResultRegister();
 
-        ALU ALU = new ALU(null,null, null);
-        RAM RAM = new RAM();
+        ALU ALU = new ALU(ALU1, ALU2, ALU3);
+
+        Register RAM1 = new Register();
+        Register RAM2 = new Register();
+        RAM RAM = new RAM(RAM1, RAM2);
+
         Microcontroller MCR = new Microcontroller();
 
         Register AC = new Register();
@@ -25,7 +32,6 @@ public class Processor {
         Gate C2 = new Gate();
         Gate D1 = new Gate();
         Gate D2 = new Gate();
-        Gate D3 = new Gate();
         Gate I1 = new Gate();
         Gate I2 = new Gate();
         Gate R1 = new Gate();
