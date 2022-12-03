@@ -41,12 +41,8 @@ public class Processor {
         Gate R2 = new Gate(AR, RAM2);
 
         Microcontroller MCR = new Microcontroller(null);
-
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                MainFrame mainFrame = new MainFrame();
-            }
-        });
+        MainFrame mainFrame = new MainFrame();
+        mainFrame.repaint();
     }
 
 }
