@@ -1,8 +1,7 @@
 
 // Registers everywhere we need gates
 
-import javax.swing.*;
-import java.util.Arrays;
+import gui.MainFrame;
 
 public class Processor {
     public static void main(String[] args) {
@@ -37,5 +36,11 @@ public class Processor {
         Gate I2 = new Gate();
         Gate R1 = new Gate();
         Gate R2 = new Gate();
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                MainFrame mainFrame = new MainFrame();
+            }
+        });
+
     }
 }
