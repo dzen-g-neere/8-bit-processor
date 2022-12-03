@@ -55,6 +55,8 @@ public class RAMGUI extends JPanel {
 
     private RegisterGUI mem15;
     private JLabel mem15Label;
+
+    private RegisterGUI[] registerGUIS;
     public RAMGUI() {
         setSize(180, 600);
         setLayout(null);
