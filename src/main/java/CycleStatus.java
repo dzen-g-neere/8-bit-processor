@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public enum CycleStatus {
+public enum CycleStatus {
+    IF,
+    ID,
+    EX
 }

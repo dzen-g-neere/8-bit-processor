@@ -16,8 +16,6 @@ public class Processor {
         Register RAM2 = new Register();
         RAM RAM = new RAM(RAM1, RAM2);
 
-        Microcontroller MCR = new Microcontroller();
-
         Register AC = new Register();
         Register DR = new Register();
         Register CR = new Register();
@@ -25,17 +23,31 @@ public class Processor {
         Register AR = new Register();
         Register BR = new Register();
 
-        Gate A1 = new Gate();
-        Gate A2 = new Gate();
-        Gate B1 = new Gate();
-        Gate B2 = new Gate();
-        Gate C1 = new Gate();
-        Gate C2 = new Gate();
-        Gate D1 = new Gate();
-        Gate D2 = new Gate();
-        Gate I1 = new Gate();
-        Gate I2 = new Gate();
-        Gate R1 = new Gate();
-        Gate R2 = new Gate();
+        Gate A1 = new Gate(ALU3, AC);
+        Gate A2 = new Gate(AC, ALU1);
+        Gate B1 = new Gate(ALU3, BR);
+        Gate B2 = new Gate(BR, ALU1);
+        Gate C1 = new Gate(ALU3, CR);
+        Gate C2 = new Gate(CR, ALU2);
+        Gate D1 = new Gate(ALU3, DR);
+        Gate D2 = new Gate(DR, ALU2);
+        Gate MD = new Gate(RAM1, DR);
+        Gate DM = new Gate(DR, RAM1);
+        Gate M1 = new Gate(null, null); //Memory save
+        Gate M2 = new Gate(null, null); //Memory load
+        Gate I1 = new Gate(ALU3, IP);
+        Gate I2 = new Gate(IP, ALU2);
+        Gate R1 = new Gate(ALU3, AR);
+        Gate R2 = new Gate(AR, RAM2);
+
+        Microcontroller MCR = new Microcontroller(null);
+
+
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                MainFrame mainFrame = new MainFrame();
+            }
+        });
     }
+
 }
