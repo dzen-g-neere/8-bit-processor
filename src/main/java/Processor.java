@@ -1,6 +1,7 @@
 
 // Registers everywhere we need gates
 
+import javax.swing.*;
 import java.util.Arrays;
 
 public class Processor {
