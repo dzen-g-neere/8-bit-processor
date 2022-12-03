@@ -1,8 +1,7 @@
 
 // Registers everywhere we need gates
 
-import javax.swing.*;
-import java.util.Arrays;
+import gui.MainFrame;
 
 public class Processor {
     public static void main(String[] args) {
@@ -23,6 +22,7 @@ public class Processor {
         Register AR = new Register();
         Register BR = new Register();
 
+
         Gate A1 = new Gate(ALU3, AC);
         Gate A2 = new Gate(AC, ALU1);
         Gate B1 = new Gate(ALU3, BR);
@@ -41,7 +41,6 @@ public class Processor {
         Gate R2 = new Gate(AR, RAM2);
 
         Microcontroller MCR = new Microcontroller(null);
-
 
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
