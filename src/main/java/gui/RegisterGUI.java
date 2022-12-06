@@ -6,6 +6,8 @@ import java.awt.*;
 
 public class RegisterGUI extends JPanel {
     public JTextField registerField;
+    private char inputF;
+    private char outputF;
     public RegisterGUI() {
         setSize(100, 30);
         setLayout(null);
@@ -17,7 +19,24 @@ public class RegisterGUI extends JPanel {
         registerField.setBounds(0, 0, 100, 30);
         add(registerField);
     }
-    public void changeValue(String value) {
+
+    public void setInputF(char inputF) {
+        this.inputF = inputF;
+    }
+
+    public void setOutputF(char outputF) {
+        this.outputF = outputF;
+    }
+
+    public char getInputF() {
+        return inputF;
+    }
+
+    public char getOutputF() {
+        return outputF;
+    }
+
+    public void setValue(String value) {
         this.registerField.setText(value);
     }
 
