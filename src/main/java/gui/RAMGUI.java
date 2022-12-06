@@ -19,10 +19,11 @@ public class RAMGUI extends JPanel {
 
         for (int i = 0; i < 17; i++) {
             registerGUIS[i] = new RegisterGUI();
-            registerGUIS[i].setLocation(50, 5 + 35 * (i + 1));
+            registerGUIS[i].setLocation(50, 5 + 35 * i);
             add(registerGUIS[i]);
             if (i == 0) {
                 registerGUILabels[i] = new JLabel("v");
+                registerGUIS[i].registerField.setBackground(Color.getHSBColor(40, 35, 20));
             } else if (i <= 10) {
                 registerGUILabels[i] = new JLabel(i - 1 + "");
             }
@@ -47,7 +48,7 @@ public class RAMGUI extends JPanel {
                     break;
             }
             registerGUILabels[i].setSize(20, 30);
-            registerGUILabels[i].setLocation(20, 5 + 35 * (i + 1));
+            registerGUILabels[i].setLocation(20, 5 + 35 * i);
             if (i <= 10) {
                 registerGUILabels[i].setFont(new Font("SansSerif", Font.BOLD, 16));
             } else {
