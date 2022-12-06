@@ -16,6 +16,7 @@ public class GateGUI extends JPanel {
     private double topYInput;
     private double botXInput;
     private double botYInput;
+
     private double leftXOutput;
     private double leftYOutput;
     private double rightXOutput;
@@ -24,6 +25,8 @@ public class GateGUI extends JPanel {
     private double topYOutput;
     private double botXOutput;
     private double botYOutput;
+
+    private Color color = Color.BLACK;
 
     public GateGUI (RegisterGUI input, RegisterGUI output, ALUGUI alu) {
         setSize(1000, 700);
@@ -80,37 +83,38 @@ public class GateGUI extends JPanel {
         topYInput = input.getY();
     }
 
+    @Override
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.black);
-        g2.setStroke(new BasicStroke(4));
+        g2.setColor(color);
+        g2.setStroke(new BasicStroke(3));
         char inputRegisterOFlag = inputRegisterGUI.getOutputF();
         char outputRegisterIFlag;
         if (outputRegisterGUI != null) {
             outputRegisterIFlag = outputRegisterGUI.getInputF();
             if (inputRegisterOFlag == 'r' && outputRegisterIFlag == 't') {
-                g2.draw(new Line2D.Double(rightXInput, rightYInput, topXOutput, rightYInput));
-                g2.draw(new Line2D.Double(topXOutput, rightYInput, topXOutput, topYOutput));
+                g2.draw(new Line2D.Double(rightXInput, rightYInput, topXOutput + inputRegisterGUI.getxOffset(), rightYInput));
+                g2.draw(new Line2D.Double(topXOutput + inputRegisterGUI.getxOffset(), rightYInput, topXOutput + inputRegisterGUI.getxOffset(), topYOutput + inputRegisterGUI.getyOffset()));
             }
 
             if (inputRegisterOFlag == 'l' && outputRegisterIFlag == 't') {
-                g2.draw(new Line2D.Double(leftXInput, leftYInput, topXOutput, leftYInput));
-                g2.draw(new Line2D.Double(topXOutput, leftYInput, topXOutput, topYOutput));
+                g2.draw(new Line2D.Double(leftXInput, leftYInput, topXOutput + inputRegisterGUI.getxOffset(), leftYInput));
+                g2.draw(new Line2D.Double(topXOutput + inputRegisterGUI.getxOffset(), leftYInput, topXOutput + inputRegisterGUI.getxOffset(), topYOutput + inputRegisterGUI.getyOffset()));
             }
 
             if (inputRegisterOFlag == 'b' && outputRegisterIFlag == 'l') {
-                g2.draw(new Line2D.Double(botXInput, botYInput, botXInput, botYInput + 50));
-                g2.draw(new Line2D.Double(botXInput, botYInput + 50, leftXOutput - 30, botYInput + 50));
-                g2.draw(new Line2D.Double(leftXOutput - 30, botYInput + 50, leftXOutput - 30, leftYOutput));
-                g2.draw(new Line2D.Double(leftXOutput - 30, leftYOutput, leftXOutput, leftYOutput));
+                g2.draw(new Line2D.Double(botXInput + outputRegisterGUI.getyOffset(), botYInput, botXInput + outputRegisterGUI.getxOffset(), botYInput + 50 + outputRegisterGUI.getyOffset()));
+                g2.draw(new Line2D.Double(botXInput + outputRegisterGUI.getxOffset(), botYInput + 50 + outputRegisterGUI.getyOffset(), leftXOutput - 30 - outputRegisterGUI.getxOffset(), botYInput + 50 + outputRegisterGUI.getyOffset()));
+                g2.draw(new Line2D.Double(leftXOutput - 30 - outputRegisterGUI.getxOffset(), botYInput + 50 + outputRegisterGUI.getyOffset(), leftXOutput - 30 - outputRegisterGUI.getxOffset(), leftYOutput));
+                g2.draw(new Line2D.Double(leftXOutput - 30 - outputRegisterGUI.getxOffset(), leftYOutput, leftXOutput, leftYOutput));
             }
 
             if (inputRegisterOFlag == 'b' && outputRegisterIFlag == 'r') {
-                g2.draw(new Line2D.Double(botXInput, botYInput, botXInput, botYInput + 50));
-                g2.draw(new Line2D.Double(botXInput, botYInput + 50, rightXOutput + 30, botYInput + 50));
-                g2.draw(new Line2D.Double(rightXOutput + 30, botYInput + 50, rightXOutput + 30, leftYOutput));
-                g2.draw(new Line2D.Double(rightXOutput + 30, rightYOutput, rightXOutput, rightYOutput));
+                g2.draw(new Line2D.Double(botXInput + outputRegisterGUI.getxOffset(), botYInput, botXInput + outputRegisterGUI.getxOffset(), botYInput + 50 + outputRegisterGUI.getyOffset()));
+                g2.draw(new Line2D.Double(botXInput + outputRegisterGUI.getxOffset(), botYInput + 50 + outputRegisterGUI.getyOffset(), rightXOutput + 30 - outputRegisterGUI.getxOffset(), botYInput + 50 + outputRegisterGUI.getyOffset()));
+                g2.draw(new Line2D.Double(rightXOutput + 30 - outputRegisterGUI.getxOffset(), botYInput + 50 + outputRegisterGUI.getyOffset(), rightXOutput + 30 - outputRegisterGUI.getxOffset(), leftYOutput));
+                g2.draw(new Line2D.Double(rightXOutput + 30 - outputRegisterGUI.getxOffset(), rightYOutput, rightXOutput, rightYOutput));
             }
         }
 
@@ -125,7 +129,13 @@ public class GateGUI extends JPanel {
         }
     }
 
-    public void activateGate () {
+    public static void activateGate (GateGUI gate) {
+        gate.color = Color.red;
+        gate.repaint();
+    }
 
+    public static void deactivateGate (GateGUI gate) {
+        gate.color = Color.black;
+        gate.repaint();
     }
 }
