@@ -8,6 +8,8 @@ public class RegisterGUI extends JPanel {
     public JTextField registerField;
     private char inputF;
     private char outputF;
+    private int xOffset;
+    private int yOffset;
     public RegisterGUI() {
         setSize(100, 30);
         setLayout(null);
@@ -34,6 +36,22 @@ public class RegisterGUI extends JPanel {
 
     public char getOutputF() {
         return outputF;
+    }
+
+    public int getxOffset() {
+        return xOffset;
+    }
+
+    public int getyOffset() {
+        return yOffset;
+    }
+
+    public void setxOffset(int xOffset) {
+        this.xOffset = xOffset;
+    }
+
+    public void setyOffset(int yOffset) {
+        this.yOffset = yOffset;
     }
 
     public void setValue(String value) {

@@ -38,28 +38,23 @@ public class MainFrame extends JFrame {
     private GateGUI D1GUI;
     private GateGUI D2GUI;
     private GateGUI MDGUI;
-    private GateGUI DMGUI;
     private GateGUI I1GUI;
     private GateGUI I2GUI;
     private GateGUI R1GUI;
     private GateGUI R2GUI;
     private JButton runBtn;
 
-    public MainFrame() {
+    public MainFrame(RegisterGUI ac, RegisterGUI br, RegisterGUI dr, RegisterGUI cr, RegisterGUI ar, RegisterGUI ip, RAMGUI ram, ALUGUI alu, GateGUI a1, GateGUI a2, GateGUI b1, GateGUI b2, GateGUI c1, GateGUI c2, GateGUI d1, GateGUI d2, GateGUI md, GateGUI i1, GateGUI i2, GateGUI r1, GateGUI r2, JButton runButton) {
         setTitle("8-bit-processor");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 700);
         setResizable(false);
-        getContentPane().setBackground(Color.getHSBColor(82, 100, 55));
+        getContentPane().setBackground(Color.decode("#009999"));
         setLayout(null);
         setLocationRelativeTo(null);
         setVisible(true);
 
-        ACGUI = new RegisterGUI();
-        ACGUI.setInputF('l');
-        ACGUI.setOutputF('r');
-        ACGUI.setLocation(150, 70);
-        ACGUI.setVisible(true);
+        ACGUI = ac;
         add(ACGUI);
 
         ACGUILabel = new JLabel("AC");
@@ -68,11 +63,7 @@ public class MainFrame extends JFrame {
         add(ACGUILabel);
 
 
-        BRGUI = new RegisterGUI();
-        BRGUI.setInputF('l');
-        BRGUI.setOutputF('r');
-        BRGUI.setLocation(150, 170);
-        BRGUI.setVisible(true);
+        BRGUI = br;
         add(BRGUI);
 
         BRGUILabel = new JLabel("BR");
@@ -81,11 +72,7 @@ public class MainFrame extends JFrame {
         add(BRGUILabel);
 
 
-        DRGUI = new RegisterGUI();
-        DRGUI.setInputF('r');
-        DRGUI.setOutputF('l');
-        DRGUI.setLocation(550, 70);
-        DRGUI.setVisible(true);
+        DRGUI = dr;
         add(DRGUI);
 
         DRGUILabel = new JLabel("DR");
@@ -94,11 +81,7 @@ public class MainFrame extends JFrame {
         add(DRGUILabel);
 
 
-        CRGUI = new RegisterGUI();
-        CRGUI.setInputF('r');
-        CRGUI.setOutputF('l');
-        CRGUI.setLocation(550, 170);
-        CRGUI.setVisible(true);
+        CRGUI = cr;
         add(CRGUI);
 
         CRGUILabel = new JLabel("CR");
@@ -107,11 +90,7 @@ public class MainFrame extends JFrame {
         add(CRGUILabel);
 
 
-        IPGUI = new RegisterGUI();
-        IPGUI.setInputF('r');
-        IPGUI.setOutputF('l');
-        IPGUI.setLocation(550, 270);
-        IPGUI.setVisible(true);
+        IPGUI = ip;
         add(IPGUI);
 
         IPGUILabel = new JLabel("IP");
@@ -120,11 +99,7 @@ public class MainFrame extends JFrame {
         add(IPGUILabel);
 
 
-        ARGUI = new RegisterGUI();
-        ARGUI.setInputF('l');
-        ARGUI.setOutputF('r');
-        ARGUI.setLocation(570, 610);
-        ARGUI.setVisible(true);
+        ARGUI = ar;
         add(ARGUI);
 
         ARGUILabel = new JLabel("AR");
@@ -133,14 +108,10 @@ public class MainFrame extends JFrame {
         add(ARGUILabel);
 
 
-        memoryGUI = new RAMGUI();
-        memoryGUI.setLocation(800, 50);
-        memoryGUI.setVisible(true);
+        memoryGUI = ram;
         add(memoryGUI);
 
-        aluGUI = new ALUGUI();
-        aluGUI.setLocation(275, 350);
-        aluGUI.setVisible(true);
+        aluGUI = alu;
         add(aluGUI);
 
         aluGUILabel = new JLabel("ALU");
@@ -149,64 +120,59 @@ public class MainFrame extends JFrame {
         add(aluGUILabel);
 
 
-        A1GUI = new GateGUI(aluGUI.getOutput(), ACGUI, aluGUI);
+        A1GUI = a1;
         A1GUI.setVisible(true);
         add(A1GUI);
 
-        A2GUI = new GateGUI(ACGUI, aluGUI.getInput1(), aluGUI);
+        A2GUI = a2;
         A2GUI.setVisible(true);
         add(A2GUI);
 
-        B1GUI = new GateGUI(aluGUI.getOutput(), BRGUI, aluGUI);
+        B1GUI = b1;
         B1GUI.setVisible(true);
         add(B1GUI);
 
-        B2GUI = new GateGUI(BRGUI, aluGUI.getInput1(), aluGUI);
+        B2GUI = b2;
         B2GUI.setVisible(true);
         add(B2GUI);
 
-        C1GUI = new GateGUI(aluGUI.getOutput(), CRGUI, aluGUI);
+        C1GUI = c1;
         C1GUI.setVisible(true);
         add(C1GUI);
 
-        C2GUI = new GateGUI(CRGUI, aluGUI.getInput2(), aluGUI);
+        C2GUI = c2;
         C2GUI.setVisible(true);
         add(C2GUI);
 
-        D1GUI = new GateGUI(aluGUI.getOutput(), DRGUI, aluGUI);
+        D1GUI = d1;
         D1GUI.setVisible(true);
         add(D1GUI);
 
-        D2GUI = new GateGUI(DRGUI, aluGUI.getInput2(), aluGUI);
+        D2GUI = d2;
         D2GUI.setVisible(true);
         add(D2GUI);
 
-        I2GUI = new GateGUI(IPGUI, aluGUI.getInput2(), aluGUI);
+        I1GUI = i1;
+        I1GUI.setVisible(true);
+        add(I1GUI);
+
+        I2GUI = i2;
         I2GUI.setVisible(true);
         add(I2GUI);
 
-        R1GUI = new GateGUI(aluGUI.getOutput(), ARGUI, aluGUI);
+        R1GUI = r1;
         R1GUI.setVisible(true);
         add(R1GUI);
 
-        R2GUI = new GateGUI(ARGUI);
+        R2GUI = r2;
         R2GUI.setVisible(true);
         add(R2GUI);
 
-        MDGUI = new GateGUI(DRGUI);
+        MDGUI = md;
         MDGUI.setVisible(true);
         add(MDGUI);
 
-        runBtn = new JButton("Run");
-        runBtn.setSize(150, 50);
-        runBtn.setLocation(0, this.getHeight() - 85);
-        runBtn.setVisible(true);
-        runBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+        runBtn = runButton;
         add(runBtn);
 
     }
