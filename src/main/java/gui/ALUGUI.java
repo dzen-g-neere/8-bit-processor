@@ -28,16 +28,7 @@ public class ALUGUI extends JPanel {
         output.setLocation(75, 60);
         add(output);
     }
-    // 275 300
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.black);
-        g2.drawLine(275, 300, 525, 300);
-        g2.drawLine(325, 100, 425, 100);
-        g2.drawLine(275, 300, 325, 400);
-        g2.drawLine(525, 300, 425, 400);
-    }
+
 
     public RegisterGUI getInput1() {
         return input1;
