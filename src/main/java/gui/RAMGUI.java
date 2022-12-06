@@ -3,6 +3,7 @@ package gui;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class RAMGUI extends JPanel {
@@ -56,6 +57,30 @@ public class RAMGUI extends JPanel {
             }
             registerGUILabels[i].setBorder(new LineBorder(Color.black, 1));
             add(registerGUILabels[i]);
+        }
+    }
+
+    public void changeValues (byte[] value, ArrayList<byte[]> memory) {
+        String temp = "";
+        for (int i = 0; i < value.length; i++) {
+            if (i == value.length - 1) {
+                temp += value[i];
+            } else {
+                temp += value[i] + " ";
+            }
+        }
+        registerGUIS[0].registerField.setText(temp);
+        String temp2;
+        for (int i = 0; i < memory.size(); i++) {
+            temp2 = "";
+            for (int j = 0; j < memory.get(i).length; j++) {
+                if (j == memory.get(i).length - 1) {
+                    temp2 += memory.get(i)[j];
+                } else {
+                    temp2 += memory.get(i)[j] + " ";
+                }
+            }
+            registerGUIS[i + 1].registerField.setText(temp2);
         }
     }
 }
