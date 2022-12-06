@@ -7,13 +7,28 @@ import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
     private RegisterGUI ACGUI;
+    private JLabel ACGUILabel;
+
     private RegisterGUI BRGUI;
+    private JLabel BRGUILabel;
+
     private RegisterGUI DRGUI;
+    private JLabel DRGUILabel;
+
     private RegisterGUI CRGUI;
+    private JLabel CRGUILabel;
+
     private RegisterGUI IPGUI;
+    private JLabel IPGUILabel;
+
     private RegisterGUI ARGUI;
+    private JLabel ARGUILabel;
+
     private RAMGUI memoryGUI;
+
     private ALUGUI aluGUI;
+    private JLabel aluGUILabel;
+
     private GateGUI A1GUI;
     private GateGUI A2GUI;
     private GateGUI B1GUI;
@@ -34,6 +49,8 @@ public class MainFrame extends JFrame {
         setTitle("8-bit-processor");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 700);
+        setResizable(false);
+        getContentPane().setBackground(Color.getHSBColor(82, 100, 55));
         setLayout(null);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -45,12 +62,24 @@ public class MainFrame extends JFrame {
         ACGUI.setVisible(true);
         add(ACGUI);
 
+        ACGUILabel = new JLabel("AC");
+        ACGUILabel.setSize(20, 20);
+        ACGUILabel.setLocation(190, 45);
+        add(ACGUILabel);
+
+
         BRGUI = new RegisterGUI();
         BRGUI.setInputF('l');
         BRGUI.setOutputF('r');
         BRGUI.setLocation(150, 170);
         BRGUI.setVisible(true);
         add(BRGUI);
+
+        BRGUILabel = new JLabel("BR");
+        BRGUILabel.setSize(20, 20);
+        BRGUILabel.setLocation(190, 145);
+        add(BRGUILabel);
+
 
         DRGUI = new RegisterGUI();
         DRGUI.setInputF('r');
@@ -59,12 +88,24 @@ public class MainFrame extends JFrame {
         DRGUI.setVisible(true);
         add(DRGUI);
 
+        DRGUILabel = new JLabel("DR");
+        DRGUILabel.setSize(20, 20);
+        DRGUILabel.setLocation(570, 45);
+        add(DRGUILabel);
+
+
         CRGUI = new RegisterGUI();
         CRGUI.setInputF('r');
         CRGUI.setOutputF('l');
         CRGUI.setLocation(550, 170);
         CRGUI.setVisible(true);
         add(CRGUI);
+
+        CRGUILabel = new JLabel("CR");
+        CRGUILabel.setSize(20, 20);
+        CRGUILabel.setLocation(590, 145);
+        add(CRGUILabel);
+
 
         IPGUI = new RegisterGUI();
         IPGUI.setInputF('r');
@@ -73,12 +114,24 @@ public class MainFrame extends JFrame {
         IPGUI.setVisible(true);
         add(IPGUI);
 
+        IPGUILabel = new JLabel("IP");
+        IPGUILabel.setSize(20, 20);
+        IPGUILabel.setLocation(590, 245);
+        add(IPGUILabel);
+
+
         ARGUI = new RegisterGUI();
         ARGUI.setInputF('l');
         ARGUI.setOutputF('r');
         ARGUI.setLocation(570, 610);
         ARGUI.setVisible(true);
         add(ARGUI);
+
+        ARGUILabel = new JLabel("AR");
+        ARGUILabel.setSize(20, 20);
+        ARGUILabel.setLocation(610, 585);
+        add(ARGUILabel);
+
 
         memoryGUI = new RAMGUI();
         memoryGUI.setLocation(800, 50);
@@ -89,6 +142,12 @@ public class MainFrame extends JFrame {
         aluGUI.setLocation(275, 350);
         aluGUI.setVisible(true);
         add(aluGUI);
+
+        aluGUILabel = new JLabel("ALU");
+        aluGUILabel.setSize(30, 20);
+        aluGUILabel.setLocation(385, 325);
+        add(aluGUILabel);
+
 
         A1GUI = new GateGUI(aluGUI.getOutput(), ACGUI, aluGUI);
         A1GUI.setVisible(true);
@@ -129,6 +188,14 @@ public class MainFrame extends JFrame {
         R1GUI = new GateGUI(aluGUI.getOutput(), ARGUI, aluGUI);
         R1GUI.setVisible(true);
         add(R1GUI);
+
+        R2GUI = new GateGUI(ARGUI);
+        R2GUI.setVisible(true);
+        add(R2GUI);
+
+        MDGUI = new GateGUI(DRGUI);
+        MDGUI.setVisible(true);
+        add(MDGUI);
 
         runBtn = new JButton("Run");
         runBtn.setSize(150, 50);

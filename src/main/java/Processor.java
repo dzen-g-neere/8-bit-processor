@@ -3,6 +3,8 @@
 
 import gui.MainFrame;
 
+import java.awt.*;
+
 public class Processor {
     public static void main(String[] args) {
         Register ALU1 = new Register();
