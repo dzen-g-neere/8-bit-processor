@@ -166,11 +166,10 @@ public class Processor {
         runBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // GateGUI.activateGate(C1GUI);
+                GateGUI.activateGate(C1GUI);
                 // Для активации гейта вызываешь метод с аргументом гейта который нужно активировать
             }
         });
-
         MainFrame mainFrame = new MainFrame(ACGUI, BRGUI, DRGUI, CRGUI, ARGUI, IPGUI, memoryGUI, aluGUI, A1GUI, A2GUI, B1GUI, B2GUI, C1GUI, C2GUI, D1GUI, D2GUI, MDGUI, I1GUI, I2GUI, R1GUI, R2GUI, runBtn);
         mainFrame.repaint();
     }

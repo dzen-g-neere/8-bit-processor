@@ -54,8 +54,16 @@ public class RegisterGUI extends JPanel {
         this.yOffset = yOffset;
     }
 
-    public void setValue(String value) {
-        this.registerField.setText(value);
+    public void changeValue(byte[] value) {
+        String temp = "";
+        for (int i = 0; i < value.length; i++) {
+            if (i == value.length - 1) {
+                temp += value[i];
+            } else {
+                temp += value[i] + " ";
+            }
+        }
+        this.registerField.setText(temp);
     }
 
 }
