@@ -64,6 +64,7 @@ public class RegisterGUI extends JPanel {
             }
         }
         this.registerField.setText(temp);
+        repaint();
     }
 
 }
