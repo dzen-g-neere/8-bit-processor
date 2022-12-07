@@ -9,7 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Processor {
+    static int counter = 0;
+
     public static void main(String[] args) {
+
         Register ALU1 = new Register();
         ALURegister ALU2 = new ALURegister();
         ALUResultRegister ALU3 = new ALUResultRegister();
@@ -166,12 +169,284 @@ public class Processor {
         runBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GateGUI.activateGate(C1GUI);
+                //ADD 1111
+                //OR 1110
+                //AND 1101
+                switch (counter) {
+                    case 0:
+                        MDGUI.activateGate(MDGUI);
+                        R1GUI.activateGate(R1GUI);
+                        R2GUI.activateGate(R2GUI);
+                        B1GUI.activateGate(B1GUI);
+                        I2GUI.activateGate(I2GUI);
+                        DR.setValue(new byte[]{0, 1, 1, 0, 1, 1, 1, 1});
+                        DRGUI.changeValue(DR.getValue());
+                        break;
+                    case 1:
+                        MDGUI.deactivateGate(MDGUI);
+                        R1GUI.deactivateGate(R1GUI);
+                        R2GUI.deactivateGate(R2GUI);
+                        B1GUI.deactivateGate(B1GUI);
+                        I2GUI.deactivateGate(I2GUI);
+
+                        B2GUI.activateGate(B2GUI);
+                        I1GUI.activateGate(I1GUI);
+                        ALU3.setValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 1});
+                        aluGUI.getOutput().changeValue(ALU3.getValue());
+                        IP.setValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 1});
+                        IPGUI.changeValue(IP.getValue());
+                        break;
+                    case 2:
+                        B2GUI.deactivateGate(B2GUI);
+                        I1GUI.deactivateGate(I1GUI);
+
+                        D2GUI.activateGate(D2GUI);
+                        C1GUI.activateGate(C1GUI);
+
+                        ALU2.setValue(new byte[]{0, 1, 1, 0, 1, 1, 1, 1});
+                        aluGUI.getInput2().changeValue(ALU2.getValue());
+                        ALU3.setValue(new byte[]{0, 1, 1, 0, 1, 1, 1, 1});
+                        aluGUI.getOutput().changeValue(ALU3.getValue());
+                        CR.setValue(new byte[]{0, 1, 1, 0, 1, 1, 1, 1});
+                        CRGUI.changeValue(CR.getValue());
+                        break;
+                    case 3:
+                        D2GUI.deactivateGate(D2GUI);
+                        C1GUI.deactivateGate(C1GUI);
+
+                        MDGUI.activateGate(MDGUI);
+                        C2GUI.activateGate(C2GUI);
+                        R1GUI.activateGate(R1GUI);
+                        R2GUI.activateGate(R2GUI);
+
+                        AR.setValue(new byte[]{0, 0, 0, 0, 1, 1, 1, 1});
+                        ARGUI.changeValue(AR.getValue());
+                        DR.setValue(new byte[]{1, 0, 1, 0, 1, 0, 1, 0});
+                        DRGUI.changeValue(DR.getValue());
+
+                        break;
+                    case 4:
+                        MDGUI.deactivateGate(MDGUI);
+                        C2GUI.deactivateGate(C2GUI);
+                        R1GUI.deactivateGate(R1GUI);
+                        R2GUI.deactivateGate(R2GUI);
+
+                        A1GUI.activateGate(A1GUI);
+                        A2GUI.activateGate(A2GUI);
+                        D2GUI.activateGate(D2GUI);
+
+                        ALU2.setValue(new byte[]{1, 0, 1, 0, 1, 0, 1, 0});
+                        aluGUI.getInput2().changeValue(ALU2.getValue());
+                        ALU3.setValue(new byte[]{1, 0, 1, 0, 1, 0, 1, 0});
+                        aluGUI.getOutput().changeValue(ALU3.getValue());
+                        AC.setValue(new byte[]{1, 0, 1, 0, 1, 0, 1, 0});
+                        ACGUI.changeValue(AC.getValue());
+                        break;
+                    ///////////////////////////////////////////////////
+                    case 5:
+
+                        A1GUI.deactivateGate(A1GUI);
+                        A2GUI.deactivateGate(A2GUI);
+                        D2GUI.deactivateGate(D2GUI);
+
+                        MDGUI.activateGate(MDGUI);
+                        R1GUI.activateGate(R1GUI);
+                        R2GUI.activateGate(R2GUI);
+                        B1GUI.activateGate(B1GUI);
+                        I2GUI.activateGate(I2GUI);
+                        DR.setValue(new byte[]{0, 1, 0, 1, 1, 1, 1, 0});
+                        BRGUI.changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 1});
+                        ARGUI.changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 1});
+                        aluGUI.getInput2().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 1});
+                        aluGUI.getOutput().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 1});
+                        DRGUI.changeValue(DR.getValue());
+                        break;
+                    case 6:
+                        MDGUI.deactivateGate(MDGUI);
+                        R1GUI.deactivateGate(R1GUI);
+                        R2GUI.deactivateGate(R2GUI);
+                        B1GUI.deactivateGate(B1GUI);
+                        I2GUI.deactivateGate(I2GUI);
+
+                        B2GUI.activateGate(B2GUI);
+                        I1GUI.activateGate(I1GUI);
+                        ALU3.setValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 2});
+                        aluGUI.getOutput().changeValue(ALU3.getValue());
+                        aluGUI.getInput1().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 1});
+                        IP.setValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 2});
+                        IPGUI.changeValue(IP.getValue());
+                        break;
+                    case 7:
+                        B2GUI.deactivateGate(B2GUI);
+                        I1GUI.deactivateGate(I1GUI);
+
+                        D2GUI.activateGate(D2GUI);
+                        C1GUI.activateGate(C1GUI);
+
+                        ALU2.setValue(new byte[]{0, 1, 0, 1, 1, 1, 1, 0});
+                        aluGUI.getInput2().changeValue(ALU2.getValue());
+                        aluGUI.getInput1().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 0});
+                        ALU3.setValue(new byte[]{0, 1, 0, 1, 1, 1, 1, 0});
+                        aluGUI.getOutput().changeValue(ALU3.getValue());
+                        CR.setValue(new byte[]{0, 1, 0, 1, 1, 1, 1, 0});
+                        CRGUI.changeValue(CR.getValue());
+                        break;
+                    case 8:
+                        D2GUI.deactivateGate(D2GUI);
+                        C1GUI.deactivateGate(C1GUI);
+
+                        MDGUI.activateGate(MDGUI);
+                        C2GUI.activateGate(C2GUI);
+                        R1GUI.activateGate(R1GUI);
+                        R2GUI.activateGate(R2GUI);
+
+                        AR.setValue(new byte[]{0, 0, 0, 0, 1, 1, 1, 0});
+                        ARGUI.changeValue(AR.getValue());
+                        DR.setValue(new byte[]{0, 0, 0, 0, 1, 1, 1, 1});
+                        DRGUI.changeValue(DR.getValue());
+
+                        break;
+                    case 9:
+                        MDGUI.deactivateGate(MDGUI);
+                        C2GUI.deactivateGate(C2GUI);
+                        R1GUI.deactivateGate(R1GUI);
+                        R2GUI.deactivateGate(R2GUI);
+
+                        A1GUI.activateGate(A1GUI);
+                        A2GUI.activateGate(A2GUI);
+                        D2GUI.activateGate(D2GUI);
+
+                        ALU1.setValue(new byte[]{1, 0, 1, 0, 1, 0, 1, 0});
+                        ALU2.setValue(new byte[]{0, 0, 0, 0, 1, 1, 1, 1});
+                        aluGUI.getInput2().changeValue(ALU2.getValue());
+                        aluGUI.getInput1().changeValue(new byte[]{1, 0, 1, 0, 1, 0, 1, 0});
+                        ALU3.setValue(new byte[]{1, 0, 1, 0, 1, 1, 1, 1});
+                        aluGUI.getOutput().changeValue(ALU3.getValue());
+                        AC.setValue(new byte[]{1, 0, 1, 0, 1, 1, 1, 1});
+                        ACGUI.changeValue(AC.getValue());
+                        break;
+                    /////////////////////////////////////
+                    ///////////////////////////////////////////////////
+                    case 10:
+
+                        A1GUI.deactivateGate(A1GUI);
+                        A2GUI.deactivateGate(A2GUI);
+                        D2GUI.deactivateGate(D2GUI);
+
+                        MDGUI.activateGate(MDGUI);
+                        R1GUI.activateGate(R1GUI);
+                        R2GUI.activateGate(R2GUI);
+                        B1GUI.activateGate(B1GUI);
+                        I2GUI.activateGate(I2GUI);
+                        DR.setValue(new byte[]{0, 1, 0, 0, 1, 1, 0, 1});
+                        BRGUI.changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 2});
+                        ARGUI.changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 2});
+                        aluGUI.getInput2().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 2});
+                        aluGUI.getInput1().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 0});
+                        aluGUI.getOutput().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 2});
+                        DRGUI.changeValue(DR.getValue());
+                        break;
+                    case 11:
+                        MDGUI.deactivateGate(MDGUI);
+                        R1GUI.deactivateGate(R1GUI);
+                        R2GUI.deactivateGate(R2GUI);
+                        B1GUI.deactivateGate(B1GUI);
+                        I2GUI.deactivateGate(I2GUI);
+
+                        B2GUI.activateGate(B2GUI);
+                        I1GUI.activateGate(I1GUI);
+                        ALU3.setValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 3});
+                        aluGUI.getOutput().changeValue(ALU3.getValue());
+                        aluGUI.getInput1().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 2});
+                        aluGUI.getInput2().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 0});
+                        IP.setValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 3});
+                        IPGUI.changeValue(IP.getValue());
+                        break;
+                    case 12:
+                        B2GUI.deactivateGate(B2GUI);
+                        I1GUI.deactivateGate(I1GUI);
+
+                        D2GUI.activateGate(D2GUI);
+                        C1GUI.activateGate(C1GUI);
+
+                        ALU2.setValue(new byte[]{0, 1, 0, 0, 1, 1, 0, 1});
+                        aluGUI.getInput2().changeValue(ALU2.getValue());
+                        aluGUI.getInput1().changeValue(new byte[]{0, 0, 0, 0, 0, 0, 0, 0});
+                        ALU3.setValue(new byte[]{0, 1, 0, 0, 1, 1, 0, 1});
+                        aluGUI.getOutput().changeValue(ALU3.getValue());
+                        CR.setValue(new byte[]{0, 1, 0, 0, 1, 1, 0, 1});
+                        CRGUI.changeValue(CR.getValue());
+                        break;
+                    case 13:
+                        D2GUI.deactivateGate(D2GUI);
+                        C1GUI.deactivateGate(C1GUI);
+
+                        MDGUI.activateGate(MDGUI);
+                        C2GUI.activateGate(C2GUI);
+                        R1GUI.activateGate(R1GUI);
+                        R2GUI.activateGate(R2GUI);
+
+                        AR.setValue(new byte[]{0, 0, 0, 0, 1, 1, 0, 1});
+                        ARGUI.changeValue(AR.getValue());
+                        DR.setValue(new byte[]{1, 0, 1, 0, 0, 0, 0, 0});
+                        DRGUI.changeValue(DR.getValue());
+
+                        break;
+                    case 14:
+                        MDGUI.deactivateGate(MDGUI);
+                        C2GUI.deactivateGate(C2GUI);
+                        R1GUI.deactivateGate(R1GUI);
+                        R2GUI.deactivateGate(R2GUI);
+
+                        A1GUI.activateGate(A1GUI);
+                        A2GUI.activateGate(A2GUI);
+                        D2GUI.activateGate(D2GUI);
+
+                        ALU1.setValue(new byte[]{1, 0, 1, 0, 1, 1, 1, 1});
+                        ALU2.setValue(new byte[]{1, 0, 1, 0, 0, 0, 0, 0});
+                        aluGUI.getInput2().changeValue(ALU2.getValue());
+                        aluGUI.getInput1().changeValue(new byte[]{1, 0, 1, 0, 1, 1, 1, 1});
+                        ALU3.setValue(new byte[]{1, 0, 1, 0, 0, 0, 0, 0});
+                        aluGUI.getOutput().changeValue(ALU3.getValue());
+                        AC.setValue(new byte[]{1, 0, 1, 0, 0, 0, 0, 0});
+                        ACGUI.changeValue(AC.getValue());
+                        break;
+                }
+                counter++;
+
                 // Для активации гейта вызываешь метод с аргументом гейта который нужно активировать
             }
         });
         MainFrame mainFrame = new MainFrame(ACGUI, BRGUI, DRGUI, CRGUI, ARGUI, IPGUI, memoryGUI, aluGUI, A1GUI, A2GUI, B1GUI, B2GUI, C1GUI, C2GUI, D1GUI, D2GUI, MDGUI, I1GUI, I2GUI, R1GUI, R2GUI, runBtn);
         mainFrame.repaint();
+
+        //ADD 1111
+        RAM1.setValue(new byte[]{1, 1, 1, 1, 0, 0, 0, 0});
+        RAM2.setValue(new byte[]{0, 1, 1, 0, 1, 1, 1, 1});
+        RAM.save();
+
+        //OR 1110
+        RAM1.setValue(new byte[]{1, 1, 1, 1, 0, 0, 0, 1});
+        RAM2.setValue(new byte[]{0, 1, 0, 1, 1, 1, 1, 0});
+        RAM.save();
+
+        //AND 1101
+        RAM1.setValue(new byte[]{1, 1, 1, 1, 0, 0, 1, 0});
+        RAM2.setValue(new byte[]{0, 1, 0, 0, 1, 1, 0, 1});
+        RAM.save();
+
+        RAM1.setValue(new byte[]{1, 1, 1, 1, 1, 1, 1, 1});
+        RAM2.setValue(new byte[]{1, 0, 1, 0, 1, 0, 1, 0});
+        RAM.save();
+        RAM1.setValue(new byte[]{1, 1, 1, 1, 1, 1, 1, 0});
+        RAM2.setValue(new byte[]{0, 0, 0, 0, 1, 1, 1, 1});
+        RAM.save();
+        RAM1.setValue(new byte[]{1, 1, 1, 1, 1, 1, 0, 1});
+        RAM2.setValue(new byte[]{1, 0, 1, 0, 0, 0, 0, 0});
+        RAM.save();
+
+        memoryGUI.changeValues(new byte[]{0, 0, 0, 0, 0, 0, 0, 0}, RAM.memory);
     }
+
 
 }

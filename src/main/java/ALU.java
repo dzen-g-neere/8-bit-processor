@@ -195,6 +195,16 @@ public class ALU {
         if (fl2) {
             byteFL2();
         }
+        inc = false;
+        dec = false;
+        add = false;
+        not = false;
+        or = false;
+        and = false;
+        rst = false;
+        lst = false;
+        fl1 = false;
+        fl2 = false;
     }
 
 }

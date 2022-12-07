@@ -1,3 +1,5 @@
+import gui.GateGUI;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Deque;

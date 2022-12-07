@@ -4,14 +4,14 @@ import java.util.List;
 
 public class RAM {
     private Register address;
-    private Register value;
+    public Register value;
 
     public RAM(Register address, Register value) {
         this.address = address;
         this.value = value;
     }
 
-    private ArrayList<byte[]> memory = new ArrayList<>(Collections.nCopies(16, new byte[]{0, 0, 0, 0, 0, 0, 0, 0}));
+    public ArrayList<byte[]> memory = new ArrayList<>(Collections.nCopies(16, new byte[]{0, 0, 0, 0, 0, 0, 0, 0}));
 
     private int convertByteToIntAddress(byte[] address) {
         int temp = 0;
