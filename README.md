@@ -15,7 +15,7 @@ Dmitrii Zalevskii
 
 **Architecture 1**
 
-` `At the beginning we created a table in excel in order to make it
+  At the beginning we created a table in excel in order to make it
 convenient for us to design an instruction set. Next we started to analyze how
 many commands and memory units we could have in 8-bit architecture. First,
 we decided to have 8 commands and 32 memory units. The main reason was
@@ -26,7 +26,7 @@ designed commands were LD, MOV, ADD, SUB, AND, OR, NOT and CLR.
 
 **Architecture 2**
 
-` `The second version of the instruction set design has changed
+  The second version of the instruction set design has changed
 significantly. We decided to allocate 4 bits to opcode and the remaining 4
 bits to address, because only 3 bits for commands were not enough for
 the full performance of our machine. Additional 8 slots for commands we
@@ -38,7 +38,7 @@ conditional commands were IFE, IFB, IFL, IFN, IFP, IFV.
 
 <a name="br2"></a>**Architecture 3**
 
-` `Current version of instruction set design requires 4 bits for opcode
+  Current version of instruction set design requires 4 bits for opcode
 and 4 bits for operand address. In this design we saw that addressless
 commands do not have operands and occupy too many slots for address
 commands. We used one opcode for all adressless commands and
