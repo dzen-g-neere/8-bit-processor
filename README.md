@@ -1,30 +1,27 @@
-﻿<a name="br1"></a>**Project Organization and Architecture Of
-Computer**
+# Project "Organization and Architecture Of Computer"
 
-**Topic:** Design an instruction set for a limited functionality machine
-having all instructions of 8-bits fixed length only, including opcode and
-operands.
+### Topic: Design an instruction set for a limited functionality machine having all instructions of 8-bits fixed length only, including opcode and operands.
 
-**Done by students of IT2-2011 group:**
+### Done by students of IT2-2011 group:
 
 Evgeniy Kim
 
 Dmitrii Zalevskii
 
-**Progress report.**
+## Progress report.
 
-**Architecture 1**
+### Architecture 1
 
   At the beginning we created a table in excel in order to make it
 convenient for us to design an instruction set. Next we started to analyze how
 many commands and memory units we could have in 8-bit architecture. First,
-we decided to have 8 commands and 32 memory units. The main reason was
+we decided to have 8 (2^3) commands and 32 (2^5) memory units (commands or variables). The main reason was
 to have the opcode described by 3 bits and the remaining 5 bits describing the
-address of a certain memory unit. With that architecture we started to design
+address of a certain memory unit containing command of the program or variable. With that architecture we started to design
 all commands necessary for our limited functional machine. Our first 8
-designed commands were LD, MOV, ADD, SUB, AND, OR, NOT and CLR.
+designed commands were LD, MOV, ADD, SUB, AND, OR, NOT and CLR (further down you can see commands dictionary).
 
-**Architecture 2**
+### Architecture 2
 
   The second version of the instruction set design has changed
 significantly. We decided to allocate 4 bits to opcode and the remaining 4
@@ -33,10 +30,7 @@ the full performance of our machine. Additional 8 slots for commands we
 used for 6 conditional commands, increment and decrement. These
 conditional commands were IFE, IFB, IFL, IFN, IFP, IFV.
 
-
-
-
-<a name="br2"></a>**Architecture 3**
+### Architecture 3
 
   Current version of instruction set design requires 4 bits for opcode
 and 4 bits for operand address. In this design we saw that addressless
@@ -52,31 +46,31 @@ potential as we have the opportunity to add 3 additional address
 commands and 9 additional addressless commands.
 
 
+## Appendix 1
 
-
-<a name="br3"></a>**Appendix 1**
-
-**Architecture 1**
+### Architecture 1
 
 ![image](https://user-images.githubusercontent.com/54273707/232287326-7573c4fd-270f-4197-b5c4-8473ac7a68a8.png)
 
-**Architecture 2**
+### Architecture 2
 
 ![image](https://user-images.githubusercontent.com/54273707/232287376-e428505f-018c-4ae6-8ac1-1bda16f15f2f.png)
 
-<a name="br4"></a>**Architecture 3**
+### Architecture 3
 
+<a name="br3"></a>**Addressless commands**
 ![image](https://user-images.githubusercontent.com/54273707/232287414-a4b24b4a-ca0c-4f5d-b9ef-51e413d7cbc6.png)
 
+<a name="br3"></a>**Address commands**
 ![image](https://user-images.githubusercontent.com/54273707/232287449-6c29513b-6680-42f2-9043-b572fbb0a312.png)
 
-<a name="br5"></a>**Appendix 2**
+## Appendix 2
 
-**Final processor design**
+### Final processor design
 
 ![image](https://user-images.githubusercontent.com/54273707/232287498-1acb0598-ee1e-48b3-ba9f-26175d02e24a.png)
 
-**Units description**
+### Units description
 
 **AC**
 
@@ -97,10 +91,7 @@ to the microcontroller.
 Instruction pointer is used to store a pointer to the next command we
 need to execute from RAM.
 
-
-
-
-<a name="br6"></a>**AR**
+**AR**
 
 Address register is used to push the address to RAM to upload some
 data or to download.
@@ -111,9 +102,9 @@ Buffer register is used for some arithmetical and logical operations.
 
 **ALU**
 
-Performs arithmetic and logical operations. Has 4 one-bit registers
+Arithmetical logical unit. Performs arithmetic and logical operations. Has 4 one-bit registers
 required to perform arithmetic, logical operations and conditional
-expressions. NZVC
+expressions (NZOC flags).
 
 Negative flag
 
@@ -123,7 +114,7 @@ Zero flag
 
 If equals 1 then the result is 0, else not zero.
 
-oVerflow flag
+Overflow flag
 
 If equals 1 then overflow had happened during the execution of the arithmetic
 operation.
@@ -144,12 +135,9 @@ variables and commands by itself, only the one who uses the machine
 can determine which memory unit contains a variable and which
 contains a command.
 
+## Appendix 3
 
-
-
-<a name="br7"></a>**Appendix 3**
-
-**Address commands explanation**
+### Address commands explanation
 
 **LD**
 
@@ -190,10 +178,7 @@ loaded from RAM to DR.
 Conditional expression that checks if Z flag equals 1, and if it is, then IP
 will be set to address specified in the last 4 bits, else IP did not change.
 
-
-
-
-<a name="br8"></a>**IFB**
+**IFB**
 
 Conditional expression that checks if Z flag and N flag equals 0, and if
 they are, then IP will be set to address specified in the last 4 bits, else IP
@@ -214,7 +199,7 @@ will be set to address specified in the last 4 bits, else IP did not change.
 Conditional expression that checks if V flag equals 1, and if it is, then IP
 will be set to address specified in the last 4 bits, else IP did not change.
 
-**Addressless commands explanation**
+### Addressless commands explanation
 
 **CLA**
 
@@ -236,9 +221,7 @@ Executes right shift binary operation.
 
 Increments AC (AC = AC + 1).
 
-
-
-<a name="br9"></a>**DEC**
+**DEC**
 
 Decrements AC (AC = AC + 1).
 
