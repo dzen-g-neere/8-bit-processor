@@ -21,6 +21,8 @@ address of a certain memory unit containing command of the program or variable. 
 all commands necessary for our limited functional machine. Our first 8
 designed commands were LD, MOV, ADD, SUB, AND, OR, NOT and CLR (further down you can see commands dictionary).
 
+![image](https://user-images.githubusercontent.com/54273707/232287326-7573c4fd-270f-4197-b5c4-8473ac7a68a8.png)
+
 ### Architecture 2
 
   The second version of the instruction set design has changed
@@ -29,6 +31,8 @@ bits to address, because only 3 bits for commands were not enough for
 the full performance of our machine. Additional 8 slots for commands we
 used for 6 conditional commands, increment and decrement. These
 conditional commands were IFE, IFB, IFL, IFN, IFP, IFV.
+
+![image](https://user-images.githubusercontent.com/54273707/232287376-e428505f-018c-4ae6-8ac1-1bda16f15f2f.png)
 
 ### Architecture 3
 
@@ -45,26 +49,14 @@ codes) addressless commands. This architecture has great scalability
 potential as we have the opportunity to add 3 additional address
 commands and 9 additional addressless commands.
 
-
-## Appendix 1
-
-### Architecture 1
-
-![image](https://user-images.githubusercontent.com/54273707/232287326-7573c4fd-270f-4197-b5c4-8473ac7a68a8.png)
-
-### Architecture 2
-
-![image](https://user-images.githubusercontent.com/54273707/232287376-e428505f-018c-4ae6-8ac1-1bda16f15f2f.png)
-
-### Architecture 3
-
 <a name="br3"></a>**Addressless commands**
 ![image](https://user-images.githubusercontent.com/54273707/232287414-a4b24b4a-ca0c-4f5d-b9ef-51e413d7cbc6.png)
 
 <a name="br3"></a>**Address commands**
 ![image](https://user-images.githubusercontent.com/54273707/232287449-6c29513b-6680-42f2-9043-b572fbb0a312.png)
 
-## Appendix 2
+
+## Appendix 1
 
 ### Final processor design
 
@@ -135,7 +127,7 @@ variables and commands by itself, only the one who uses the machine
 can determine which memory unit contains a variable and which
 contains a command.
 
-## Appendix 3
+## Appendix 2
 
 ### Address commands explanation
 
